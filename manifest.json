@@ -18,6 +18,7 @@
     ],
     "file_handlers": [
         {
+            "action": "/",
             "accept": {
                 "text/jot": [".jot"]
             }
