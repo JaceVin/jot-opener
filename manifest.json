@@ -1,7 +1,7 @@
 {
     "name": "Jot File Opener",
     "short_name": "JotOpener",
-    "start_url": "/",
+    "start_url": "/jot-opener/",
     "display": "standalone",
     "description": "A PWA to open and process .jot files",
     "icons": [
