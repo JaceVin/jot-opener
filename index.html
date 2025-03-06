@@ -42,7 +42,7 @@
                 return
             }
             
-            const text = await file.text()
+            const text = await jotFile.text()
             let count = 0;
             const compiledText = text.replace(/^>$/gm, () => `><${count++}>`)
             return compiledText
