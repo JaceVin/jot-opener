@@ -14,8 +14,8 @@
         document.getElementById('fileInput').addEventListener('change', async function(event) {
             const file = event.target.files[0];
             if (file) {
-                const text = await file.text();
-                document.getElementById('output').innerText = text;
+                const compiledText = await compileJotFile(file)
+                document.getElementById('output').innerText = compiledText;
             }
         });
 
@@ -24,8 +24,8 @@
                 if (!launchParams.files.length) return;
                 for (const fileHandle of launchParams.files) {
                     const file = await fileHandle.getFile();
-                    const text = await file.text();
-                    document.getElementById('output').innerText = text;
+                    const compiledText = await compileJotFile(file)
+                    document.getElementById('output').innerText = compiledText;
                 }
             });
         }
@@ -34,6 +34,18 @@
             navigator.serviceWorker.register("/sw.js")
                 .then(() => console.log("Service Worker Registered"))
                 .catch((err) => console.log("Service Worker Error:", err));
+        }
+
+        async function compileJotFile(jotFile) {
+            if (!jotFile) {
+                alert('Please select a .jot file.')
+                return
+            }
+            
+            const text = await file.text()
+            let count = 0;
+            const compiledText = text.replace(/^>$/gm, () => `><${count++}>`)
+            return compiledText
         }
     </script>
     
